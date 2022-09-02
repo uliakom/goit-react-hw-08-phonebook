@@ -1,9 +1,12 @@
 import RegisterForm from 'components/RegisterForm/RegisterForm';
+import AnimatedPage from 'components/AnimatedPage';
 
 const LoginPage = () => {
   return (
     <div>
-      <RegisterForm />
+      <AnimatedPage>
+        <RegisterForm />
+      </AnimatedPage>
     </div>
   );
 };
