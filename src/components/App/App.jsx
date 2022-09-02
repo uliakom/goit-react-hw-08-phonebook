@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-// import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Header from 'components/Header';
 import RegisterPage from 'pages/RegisterPage';
 import Home from 'pages/Home';
@@ -61,7 +61,7 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          {/* <Route path="*" element={<Navigate to="/" />} /> */}
+          <Route path="*" element={<Navigate to="/" />} />
           {/* </Suspense> */}
         </Route>
       </Routes>
