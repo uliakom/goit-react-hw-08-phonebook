@@ -51,6 +51,7 @@ background: linear-gradient(to left, #00223E, #FFA17F); /* W3C, IE 10+/ Edge, Fi
     &:hover,
     &:focus {
       transform: scale(1.1);
+      /* autoprefixer: off */
       transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
       -webkit-transform: scale(1.1);
       -moz-transform: scale(1.1);

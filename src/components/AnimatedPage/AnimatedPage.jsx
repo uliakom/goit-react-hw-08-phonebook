@@ -13,6 +13,7 @@ const AnimatedPage = ({ children }) => {
       initial="initial"
       animate="animate"
       exit="exit"
+      /* autoprefixer: off */
       transition={{ duration: 1 }}
     >
       {children}
