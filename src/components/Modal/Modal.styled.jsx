@@ -6,6 +6,7 @@ export const Backdrop = styled.div`
   background: rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
+  /* autoprefixer: off */
   transition: opacity 1200ms, visibility 1000ms;
 `;
 

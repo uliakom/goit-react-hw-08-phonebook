@@ -1,12 +1,12 @@
 import LoginForm from 'components/LoginForm';
-// import AnimatedPage from 'components/AnimatedPage';
+import AnimatedPage from 'components/AnimatedPage';
 
 const LoginPage = () => {
   return (
     <div>
-      {/* <AnimatedPage> */}
-      <LoginForm />
-      {/* </AnimatedPage> */}
+      <AnimatedPage>
+        <LoginForm />
+      </AnimatedPage>
     </div>
   );
 };
