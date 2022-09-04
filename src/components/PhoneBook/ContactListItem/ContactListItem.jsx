@@ -1,17 +1,25 @@
 import PropTypes from 'prop-types';
 import { Container, Wrap, Name, Phone } from './ContactListItem.styled';
 import { useDeleteContactMutation } from 'redux/api';
+import { useNavigate } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { Link,useLocation } from 'react-router-dom';
 
 const ContactListItem = ({ contact }) => {
   const [deleteContact, { isLoading: removing }] = useDeleteContactMutation();
   const { name, number, id } = contact;
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     deleteContact(id);
     Notify.success('Contact is deleted');
     Loader();
+  };
+
+  const openModal = () => {
+    Loader();
+    navigate(`/edit/${id}`);
   };
 
   return (
@@ -26,6 +34,9 @@ const ContactListItem = ({ contact }) => {
       </Wrap>
       <button type="button" disabled={removing} onClick={handleDelete}>
         Delete
+      </button>
+      <button type="button" disabled={removing} onClick={openModal}>
+        Edit
       </button>
     </Container>
   );

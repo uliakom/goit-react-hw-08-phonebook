@@ -14,7 +14,7 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
+const register = createAsyncThunk('auth/register', async (credentials, { rejectWithValue }) => {
   try {
       const { data } = await axios.post('/users/signup', credentials);
       data.user && Report.success(
@@ -25,34 +25,34 @@ const register = createAsyncThunk('auth/register', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    Report.failure(
+    return rejectWithValue(Report.failure(
 'Failure',
 'You enter incorrect data. <br/><br/>Please try again',
 'Ok',
-);
+))
   }
 });
 
-const logIn = createAsyncThunk('auth/login', async credentials => {
+const logIn = createAsyncThunk('auth/login', async (credentials, { rejectWithValue }) => {
   try {
     const { data } = await axios.post('/users/login', credentials);
     token.set(data.token);
     return data;
   } catch (error) {     
-Report.failure(
-'Failure',
-'You enter incorrect email or password .Or you have already logged in. <br/><br/>Please try again',
-'Ok',
-);
+    return rejectWithValue(Report.failure(
+      'Failure',
+      'You enter incorrect email or password. <br/><br/>Please try again',
+      'Ok',
+    ));
   }
 });
 
-const logOut = createAsyncThunk('auth/logout', async () => {
+const logOut = createAsyncThunk('auth/logout', async (_,{ rejectWithValue }) => {
   try {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
-    Notify.failure('You are not logged in.');
+    return rejectWithValue(Notify.failure('You are not logged in.'));
   }
 });
 

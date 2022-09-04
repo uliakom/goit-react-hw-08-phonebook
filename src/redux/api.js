@@ -47,10 +47,10 @@ export const contactApi = createApi({
       }), 
 
        editContact: builder.mutation({
-      query: data => ({
-        url: `/contacts/${data.id}`,
+      query: ({ contactId, name, number }) => ({
+        url: `/contacts/${contactId}`,
         method: 'PATCH',
-        body: data,
+        body: { name, number },
       }),
       invalidatesTags: ['Contacts'],
     }),
