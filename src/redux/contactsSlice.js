@@ -23,5 +23,5 @@ export const phoneBookSlice = createSlice({
   },
 });
 
-export const { addContact, removeContact, filterContact } =
+export const { filterContact } =
   phoneBookSlice.actions;
