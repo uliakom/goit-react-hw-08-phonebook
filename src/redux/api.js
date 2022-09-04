@@ -4,7 +4,7 @@ export const contactApi = createApi({
   reducerPath: 'phonebookApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com',
- prepareHeaders: (headers, { getState }) => {
+    prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
 
       if (token) {
@@ -15,38 +15,29 @@ export const contactApi = createApi({
   }),
   tagTypes: ['contact'],
   endpoints: builder => ({
-   
-      getContacts: builder.query({
+    getContacts: builder.query({
       query: () => `/contacts`,
       providesTags: ['Contact'],
-      }),
-      
-        getContactById: builder.query({
-      query: (id) => ({
-        url: `/contacts/${id}`,
-        method: 'GET',
-      }),
-      providesTags: ['Contact'],
     }),
-      
-      createContact: builder.mutation({
-      query: (newContact) => ({
+
+    createContact: builder.mutation({
+      query: newContact => ({
         url: `/contacts`,
         method: 'POST',
         body: newContact,
       }),
       invalidatesTags: ['Contact'],
-      }),
-    
-      deleteContact: builder.mutation({
+    }),
+
+    deleteContact: builder.mutation({
       query: contactId => ({
         url: `/contacts/${contactId}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Contact'],
-      }), 
+    }),
 
-       editContact: builder.mutation({
+    editContact: builder.mutation({
       query: ({ contactId, name, number }) => ({
         url: `/contacts/${contactId}`,
         method: 'PATCH',
@@ -54,12 +45,12 @@ export const contactApi = createApi({
       }),
       invalidatesTags: ['Contacts'],
     }),
-      
-    }),
-})
+  }),
+});
 
-export const { useGetContactsQuery,
-    useGetContactByIdQuery,
-    useCreateContactMutation,
-    useDeleteContactMutation,
-useEditContactMutation} = contactApi;
+export const {
+  useGetContactsQuery,
+  useCreateContactMutation,
+  useDeleteContactMutation,
+  useEditContactMutation,
+} = contactApi;

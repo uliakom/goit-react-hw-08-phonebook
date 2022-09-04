@@ -58,7 +58,6 @@ const App = () => {
                 </PrivateRoute>
               }
             />
-
             <Route
               path="/edit/:contactId/*"
               element={

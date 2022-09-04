@@ -17,16 +17,16 @@ import storage from 'redux-persist/lib/storage';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token','isLoggedIn'],
+  whitelist: ['token', 'isLoggedIn'],
 };
 
 export const store = configureStore({
-    reducer: {
+  reducer: {
     contacts: phoneBookSlice.reducer,
     [contactApi.reducerPath]: contactApi.reducer,
-      auth: persistReducer(authPersistConfig, authSlice.reducer)
+    auth: persistReducer(authPersistConfig, authSlice.reducer),
   },
-   middleware: getDefaultMiddleware => [
+  middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
@@ -35,6 +35,6 @@ export const store = configureStore({
     contactApi.middleware,
   ],
   devTools: process.env.NODE_ENV === 'development',
-})
+});
 
 export const persistor = persistStore(store);

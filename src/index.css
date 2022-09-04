@@ -7,12 +7,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./image/phone2.jpg");
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover ;
-    background-color: black;
-    overflow: hidden;
+  background-image: url('./image/phone2.jpg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+  overflow: hidden;
 }
 
 code {

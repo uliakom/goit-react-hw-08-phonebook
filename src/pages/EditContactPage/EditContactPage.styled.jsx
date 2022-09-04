@@ -73,8 +73,9 @@ position: relative;
   }
 
   input {
-    width: 200px;
-    height: 20px;
+    width: 300px;
+    height: 30px;
+    margin-bottom: 10px;
     border-image: linear-gradient(to left, #00223E, #FFA17F);
     border-image-slice: 1;
     background: transparent;

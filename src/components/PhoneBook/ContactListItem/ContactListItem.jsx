@@ -4,7 +4,6 @@ import { useDeleteContactMutation } from 'redux/api';
 import { useNavigate } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import { Link,useLocation } from 'react-router-dom';
 
 const ContactListItem = ({ contact }) => {
   const [deleteContact, { isLoading: removing }] = useDeleteContactMutation();
